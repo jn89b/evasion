@@ -20,6 +20,10 @@
     - Read results:
         - https://medium.com/aureliantactics/understanding-ppo-plots-in-tensorboard-cbc3199b9ba2
         - https://pythonprogramming.net/saving-and-loading-reinforcement-learning-stable-baselines-3-tutorial/
-        
     - Selecting algos:
         - https://intellabs.github.io/coach/selecting_an_algorithm.html
+    - Useful links:
+        - https://www.youtube.com/watch?v=nRHjymV2PX8
+        - https://jonathan-hui.medium.com/rl-tips-on-reinforcement-learning-fbd121111775
+        - https://towardsdatascience.com/deep-learning-basics-1d26923cc24a
+        

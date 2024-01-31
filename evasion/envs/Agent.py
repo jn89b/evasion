@@ -35,11 +35,19 @@ class Agent:
         new_y = self.y + (action[0]*np.sin(self.psi))
         new_psi = self.psi + action[1]
         #new_psi = action[1]
-        self.current_state = np.array([new_x, new_y, new_psi])
         
         self.x = new_x
         self.y = new_y
         self.psi = new_psi
+        
+        #wrap angle between -pi and pi
+        if self.psi > np.pi:
+            self.psi = self.psi - 2*np.pi
+        elif self.psi < -np.pi:
+            self.psi = self.psi + 2*np.pi
+        
+        self.current_state = np.array([self.x, self.y, self.psi])
+
         
         return self.current_state
         
@@ -48,10 +56,17 @@ class Agent:
         return self.current_state
     
     
-    def reset(self) -> None:
+    def reset(self, set_random:bool=False, new_start:np.ndarray=None) -> None:
         """reset the agent to the start state"""
-        self.x = self.start_state[0]
-        self.y = self.start_state[1]
-        self.psi = self.start_state[2]
-        self.current_state = self.start_state
+        if set_random and new_start is not None:
+            self.start_state = new_start
+            self.x = new_start[0]
+            self.y = new_start[1]
+            self.psi = new_start[2]
+            self.current_state = new_start
+        else:
+            self.x = self.start_state[0]
+            self.y = self.start_state[1]
+            self.psi = self.start_state[2]
+            self.current_state = self.start_state
         return self.current_state
